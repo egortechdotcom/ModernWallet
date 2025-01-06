@@ -1,0 +1,33 @@
+{
+  "name": "Naruto extension",
+  "version": "1.0.0",
+  "description": "chrome-extension://clofijmmclhaoeekmffmbekaobpjffpb/index.html",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Open Wallet"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "js": [
+        "narINUProvider.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
